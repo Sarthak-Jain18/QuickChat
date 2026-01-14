@@ -14,7 +14,7 @@ export default function ChatContainer() {
 
     // Sending text
     async function handleSendMessage(e) {
-        e.preventDefault();
+        if (e) e.preventDefault();
 
         if (input.trim() === "") return null
 
@@ -105,13 +105,13 @@ export default function ChatContainer() {
                         <img src={assets.gallery_icon} alt="" className="w-5 mr-2 cursor-pointer" />
                     </label>
                 </div>
-                <img src={assets.send_button} alt="" className="w-7 cursor-pointer" />
+                <img onClick={handleSendMessage} src={assets.send_button} alt="" className="w-7 cursor-pointer" />
             </div>
 
         </div>
     ) : (
         <div className="flex flex-col items-center justify-center gap-2 text-gray-500 bg-white/10 max-md:hidden">
-            <img onClick={handleSendMessage} src={assets.logo_icon} alt="" className="max-w-16" />
+            <img src={assets.logo_icon} alt="" className="max-w-16" />
             <p className="text-lg font-medium text-white">Chat anytime, anywhere</p>
         </div>
     )
